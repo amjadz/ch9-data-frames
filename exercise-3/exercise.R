@@ -3,16 +3,19 @@
 # Load R's "USPersonalExpenditure" dataset using the `data()` function
 # This will produce a data frame called `USPersonalExpenditure`
 
+data_set <- data(USPersonalExpenditure)
 
 # The variable `USPersonalExpenditure` is now accessible to you. Unfortunately,
 # it's not a data frame (it's actually what is called a matrix)
 # Test this using the `is.data.frame()` function
-
+is.data.frame(data_set)
 
 # Luckily, you can pass the USPersonalExpenditure variable as an argument to the
 # `data.frame()` function to convert it a data farm. Do this, storing the
 # result in a new variable
 
+data <- data.frame(USPersonalExpenditure)
+is.data.frame(data)
 
 # What are the column names of your dataframe?
 
@@ -22,17 +25,18 @@
 
 # What are the row names of your dataframe?
 
-
+rows <- rownames(data)
 # Add a column "category" to your data frame that contains the rownames
-
+data$newcolumn <- "Category"
 
 # How much money was spent on personal care in 1940?
-
+care_1940 <- data['Personal Care', 'X1940']
 
 # How much money was spent on Food and Tobacco in 1960?
-
+food_1960 <- data['Food and Tobacco', 'X1960']
 
 # What was the highest expenditure category in 1960?
+highest_1960 <- data$Category[data$X1960 == max(data$X1960)]
 
 
 # Define a function `lowest_category` that takes in a year as a parameter, and
